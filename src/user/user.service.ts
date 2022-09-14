@@ -1,4 +1,5 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
+import { UserRecord } from 'firebase-admin/lib/auth/user-record';
 import { FirebaseAdmin } from '../../config/firebase.setup';
 import { UserDto } from './dto/user.dto';
 
@@ -6,7 +7,7 @@ import { UserDto } from './dto/user.dto';
 export class UserService {
   constructor(private readonly admin: FirebaseAdmin) {}
 
-  async createUser(userRequest: UserDto): Promise<any> {
+  async createUser(userRequest: UserDto): Promise<UserRecord> {
     const { email, password, firstName, lastName, role } = userRequest;
     const app = this.admin.setup();
 

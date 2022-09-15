@@ -6,13 +6,14 @@ import { CurrentUserInterceptor } from './interceptors/current-user.interceptor'
 import { UserDto } from './user/dto/user.dto';
 import { UserService } from './user/user.service';
 
-@Controller('user')
+@Controller('app')
 // @UseInterceptors(CurrentUserInterceptor)
 export class AppController {
   @Get('/morning')
   @Auth('ADMIN')
-  goodMorning(@CurrentUser('email') email: string) {
-    return 'Good Morning!' + email;
+  // goodMorning(@CurrentUser('email') email: string) {
+  goodMorning() {
+    return;
   }
   @Get('/afternoon')
   @Auth('DEVELOPER')
